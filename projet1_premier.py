@@ -11,7 +11,6 @@ df = pd.read_csv(url)
 #print(df.loc[0:50, ["Y", "X", "valeur", "date_ech", "lib_zone"]].df[df["lib_zone"]=="BLOIS"])
 #print(df[df["lib_zone"]=="BLOIS"])
 
-var=df.loc[:, ["Y", "X", "val_pm10", "date_ech", "lib_zone"]][df.lib_zone == "BLOIS"][df.date_ech == "2019/01/02 00:00:00+00"]
-
+var=df.loc[:, ["Y", "X", "val_pm10", "date_ech", "lib_zone"]][df.lib_zone == "BLOIS"][df.date_ech >= "2019/01/01 00:00:00+00"][df.date_ech < "2019/02/01 00:00:00+00"].sort_values(by= ["date_ech"])
 
 print(var)
