@@ -11,5 +11,7 @@ df = pd.read_csv(url)
 #print(df.loc[0:50, ["Y", "X", "valeur", "date_ech", "lib_zone"]].df[df["lib_zone"]=="BLOIS"])
 #print(df[df["lib_zone"]=="BLOIS"])
 
-print(df.loc[0:50, ["Y", "X", "valeur", "date_ech", "lib_zone"]][df.lib_zone == "BLOIS"])
-df['val_no2'].plot.box()
+var=df.loc[:, ["Y", "X", "val_pm10", "date_ech", "lib_zone"]][df.lib_zone == "BLOIS"][df.date_ech == "2019/01/02 00:00:00+00"]
+
+
+print(var)
