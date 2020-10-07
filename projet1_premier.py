@@ -131,6 +131,6 @@ print(janBloispm10.describe())
 '''
 var = df.loc[:, ["val_no2", "date_ech", "lib_zone"]][df.lib_zone == "BLOIS"][df.date_ech >= "2018/01/01 00:00:00+00"][df.date_ech < "2018/02/01 00:00:00+00"].sort_values(by= ["date_ech"])
 
-test = df.loc[:,["val_so2","val_03","val_pm25","val_pm10","date_ech","lib_zone"]].groupby([df.lib_zone == "BLOIS"]).mean()
+test = df.loc[:,["val_so2","val_o3","val_pm25","val_pm10","date_ech","lib_zone"]].groupby([df.lib_zone == "BLOIS"]).mean()
 
 print(test)
