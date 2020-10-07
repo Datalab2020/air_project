@@ -14,12 +14,12 @@ url = "https://opendata.arcgis.com/datasets/6f64bbd4f94c425791c2ec7eee33bb71_0.c
 df = pd.read_csv(url)
 
 
-jour = pd.DatetimeIndex(df["date_ech"]).day
-mois = pd.DatetimeIndex(df["date_ech"]).month
-an = pd.DatetimeIndex(df["date_ech"]).year
+df["jour"] = pd.DatetimeIndex(df["date_ech"]).day
+df["mois"] = pd.DatetimeIndex(df["date_ech"]).month
+df["an"] = pd.DatetimeIndex(df["date_ech"]).year
 
 
-print(jour)
+print("jour")
 '''
 var = df.loc[:, ["val_no2", "date_ech", "lib_zone"]][df.lib_zone == "BLOIS"][df.date_ech >= "2018/01/01 00:00:00+00"][df.date_ech < "2018/02/01 00:00:00+00"].sort_values(by= ["date_ech"])
 
