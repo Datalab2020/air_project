@@ -16,10 +16,13 @@ url = "https://opendata.arcgis.com/datasets/6f64bbd4f94c425791c2ec7eee33bb71_0.c
 df = pd.read_csv(url)
 
 
-print(df)
+print (df)
 
-print (5)
+print(df.info())
+print(df.columns)
 
 
+print (df.loc[:,"lib_zone"])
 
+print (df.loc[:,"valeur"])
 
