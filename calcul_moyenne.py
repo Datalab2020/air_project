@@ -25,11 +25,25 @@ df["an"] = pd.DatetimeIndex(df["date_ech"]).year
 '''
 #Groupement des villes par mois et années avec moyenne, min et max de chaque polluant
 dfGroup = df.groupby(["lib_zone", "mois", "an"])
-dfAgre = dfGroup.agg({"val_no2" : ['mean','min','max'],
+'''
+dfAg = dfGroup.agg({"val_no2" : ['mean','min','max'],
                        "val_so2" : ['mean','min','max'],
                        "val_o3" : ['mean','min','max'],
                        "val_pm25" : ['mean','min','max'],
                        "val_pm10" : ['mean','min','max']})
-print(dfAgre)
+'''
+dfAgre = dfGroup.agg({"val_no2" : 'mean',
+                       "val_so2" : 'mean',
+                       "val_o3" : 'mean',
+                       "val_pm25" : 'mean',
+                       "val_pm10" : 'mean'})
+#dfAgre= dfAgre.T
+
+dfFin = dfAgre.reset_index()
+
+dfFin= dfFin[dfFin.lib_zone == "BLOIS"]
+
+dfUlt = dfFin.T
+print(dfFin)
 
 
