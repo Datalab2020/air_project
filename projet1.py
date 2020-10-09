@@ -17,12 +17,19 @@ df = pd.read_csv(url)
 
 
 print (df)
-
+"""
 print(df.info())
 print(df.columns)
 
+print(df.loc[:, 'valeur'])
+print(df['qualif'])
 
-print (df.loc[:,"lib_zone"])
+print(df[['type_zone', 'couleur']])
+print(df.valeur)
+print(df.Y)
 
-print (df.loc[:,"valeur"])
 
+print (df.lib_zone.head())
+"""
+
+print(df.sort_values(by='valeur').head())
