@@ -11,6 +11,7 @@ from datetime import datetime
 import folium
 import matplotlib.pyplot as plt
 import seaborn as sns; sns.set()
+import plotly.express as px
 
 # Dataframe
 url = "https://opendata.arcgis.com/datasets/6f64bbd4f94c425791c2ec7eee33bb71_0.csv"
@@ -48,6 +49,7 @@ moyenneT = df.loc[(df["lib_zone"] == "TOURS")].groupby(["annee", "mois"]).mean()
 moyenneB = df.loc[(df["lib_zone"] == "BOURGES")].groupby(["annee", "mois"]).mean()[["val_no2", "val_so2", "val_o3", "val_pm10"]]
 #print(moyenneB)
 
+# PLOT
 #df.plot.scatter(x='mois',y='val_no2')
 #print(moyenneT.plot())
 #print(moyenneB.plot())
@@ -56,7 +58,8 @@ moyenneB = df.loc[(df["lib_zone"] == "BOURGES")].groupby(["annee", "mois"]).mean
 ntours= df.loc[(df["lib_zone"] == "TOURS")].groupby(["annee", "mois"]).mean()["val_no2"].reset_index()
 #print(ntours)
 
-plt.figure(figsize=(40, 20))
+# SEABORN
+#plt.figure(figsize=(40, 20))
 
 # Graph moyenne no2 par mois pour Tours
 #sns.relplot(x="mois", y="val_no2", kind="line", data=ntours)
@@ -67,5 +70,7 @@ plt.figure(figsize=(40, 20))
 # Graph moyenne no2 pour annee 2018 par mois pour Tours
 #sns.relplot(x="mois", y="val_no2", kind="line", data=ntours.query("annee == '2018'"))
 
-
-
+# PLOTLY
+#plo = px.ntours.gapminder().query("annee == '2018'")
+fig = px.line(data_frame=(ntours), x="mois", y="val_no2")
+fig.show()
