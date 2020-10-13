@@ -43,47 +43,118 @@ df["annee"] = pd.DatetimeIndex(df["date_ech"]).year
 
 # Essai 1 fonction sous alias
 def moyenne(ville):
-    return df.loc[(df["lib_zone"] == ville)].groupby(["annee", "mois"]).mean()[["val_no2", "val_so2", "val_o3", "val_pm10"]]
+    return df.loc[(df["lib_zone"] == ville)].groupby(["annee", "mois"]).mean()[["val_no2", "val_so2", "val_o3", "val_pm10", "val_pm25"]]
 
 print(moyenne("TOURS"))
 print(moyenne("BOURGES"))
 
-# Moyennes par années et par mois pour les polluants pour Tours
-moyenneT = df.loc[(df["lib_zone"] == "TOURS")].groupby(["annee", "mois"]).mean()[["val_no2", "val_so2", "val_o3", "val_pm10"]]
-#print(moyenneT)
 
-# Moyennes par années et par mois pour les polluants pour Bourges
-moyenneB = df.loc[(df["lib_zone"] == "BOURGES")].groupby(["annee", "mois"]).mean()[["val_no2", "val_so2", "val_o3", "val_pm10"]]
-#print(moyenneB)
+# Moyennes par années et par mois pour les polluants pour TOURS
+moyenneT = df.loc[(df["lib_zone"] == "TOURS")].groupby(["annee", "mois"]).mean()[["val_no2", "val_so2", "val_o3", "val_pm10", "val_pm25"]]
+
+# Moyennes par années et par mois pour les polluants pour BOURGES
+moyenneB = df.loc[(df["lib_zone"] == "BOURGES")].groupby(["annee", "mois"]).mean()[["val_no2", "val_so2", "val_o3", "val_pm10", "val_pm25"]]
+
+# Moyennes par années et par mois pour les polluants pour BLOIS
+moyenneBL = df.loc[(df["lib_zone"] == "BLOIS")].groupby(["annee", "mois"]).mean()[["val_no2", "val_so2", "val_o3", "val_pm10", "val_pm25"]]
+
+# Moyennes par années et par mois pour les polluants pour CHARTRES
+moyenneC = df.loc[(df["lib_zone"] == "CHARTRES")].groupby(["annee", "mois"]).mean()[["val_no2", "val_so2", "val_o3", "val_pm10", "val_pm25"]]
+
+# Moyennes par années et par mois pour les polluants pour CHATEAUROUX
+moyenneCH = df.loc[(df["lib_zone"] == "CHATEAUROUX")].groupby(["annee", "mois"]).mean()[["val_no2", "val_so2", "val_o3", "val_pm10", "val_pm25"]]
+
+# Moyennes par années et par mois pour les polluants pour DREUX
+moyenneD = df.loc[(df["lib_zone"] == "DREUX")].groupby(["annee", "mois"]).mean()[["val_no2", "val_so2", "val_o3", "val_pm10", "val_pm25"]]
+
+# Moyennes par années et par mois pour les polluants pour MONTARGIS
+moyenneM = df.loc[(df["lib_zone"] == "MONTARGIS")].groupby(["annee", "mois"]).mean()[["val_no2", "val_so2", "val_o3", "val_pm10", "val_pm25"]]
+
+# Moyennes par années et par mois pour les polluants pour ORLEANS
+moyenneO = df.loc[(df["lib_zone"] == "ORLEANS")].groupby(["annee", "mois"]).mean()[["val_no2", "val_so2", "val_o3", "val_pm10", "val_pm25"]]
 
 
-
-# PLOT
-#df.plot.scatter(x='mois',y='val_no2')
-graphT= moyenneT.plot(figsize=(15,8), title="Moyenne sur 3 ans pour les polluants sur Tours")
+# Graphiques de la moyenne des polluants sur 3 ans avec PLOT + MATPLOTLIB
+graphT= moyenneT.plot(figsize=(15,9), title="MOYENNES DES POLLUANTS SUR 3 ANS POUR TOURS")
 fig = graphT.get_figure()
+axes = plt.gca()
+axes.set_xlabel("TEMPS EN ANNEE/MOIS")
+fig.autofmt_xdate()
+axes.set_ylabel("VALEURS")
 plt.savefig("graphT")
 
-#print(moyenneB.plot())
+graphB= moyenneB.plot(figsize=(15,9), title="MOYENNES DES POLLUANTS SUR 3 ANS POUR BOURGES")
+fig = graphB.get_figure()
+axes = plt.gca()
+axes.set_xlabel("TEMPS EN ANNEE/MOIS")
+fig.autofmt_xdate()
+axes.set_ylabel("VALEURS")
+plt.savefig("graphB")
+
+graphBL= moyenneBL.plot(figsize=(15,9), title="MOYENNES DES POLLUANTS SUR 3 ANS POUR BLOIS")
+fig = graphBL.get_figure()
+axes = plt.gca()
+axes.set_xlabel("TEMPS EN ANNEE/MOIS")
+fig.autofmt_xdate()
+axes.set_ylabel("VALEURS")
+plt.savefig("graphBL")
+
+graphC= moyenneC.plot(figsize=(15,9), title="MOYENNES DES POLLUANTS SUR 3 ANS POUR CHARTRES")
+fig = graphC.get_figure()
+axes = plt.gca()
+axes.set_xlabel("TEMPS EN ANNEE/MOIS")
+fig.autofmt_xdate()
+axes.set_ylabel("VALEURS")
+plt.savefig("graphC")
+
+graphCH= moyenneCH.plot(figsize=(15,9), title="MOYENNES DES POLLUANTS SUR 3 ANS POUR CHATEAUROUX")
+fig = graphCH.get_figure()
+axes = plt.gca()
+axes.set_xlabel("TEMPS EN ANNEE/MOIS")
+fig.autofmt_xdate()
+axes.set_ylabel("VALEURS")
+plt.savefig("graphCH")
+
+graphD= moyenneD.plot(figsize=(15,9), title="MOYENNES DES POLLUANTS SUR 3 ANS POUR DREUX")
+fig = graphD.get_figure()
+axes = plt.gca()
+axes.set_xlabel("TEMPS EN ANNEE/MOIS")
+fig.autofmt_xdate()
+axes.set_ylabel("VALEURS")
+plt.savefig("graphD")
+
+graphM= moyenneM.plot(figsize=(15,9), title="MOYENNES DES POLLUANTS SUR 3 ANS POUR MONTARGIS")
+fig = graphM.get_figure()
+axes = plt.gca()
+axes.set_xlabel("TEMPS EN ANNEE/MOIS")
+fig.autofmt_xdate()
+axes.set_ylabel("VALEURS")
+plt.savefig("graphM")
+
+graphO= moyenneO.plot(figsize=(15,9), title="MOYENNES DES POLLUANTS SUR 3 ANS POUR ORLEANS")
+fig = graphO.get_figure()
+axes = plt.gca()
+axes.set_xlabel("TEMPS EN ANNEE/MOIS")
+fig.autofmt_xdate()
+axes.set_ylabel("VALEURS")
+plt.savefig("graphO")
 
 
 # Dataframe no2/Tours pour les graphs Seaborn
-ntours= df.loc[(df["lib_zone"] == "TOURS")].groupby(["annee", "mois"]).mean()["val_no2"].reset_index()
+ntours= df.loc[(df["lib_zone"] == "TOURS")].groupby(["annee", "mois"]).mean()[("val_no2")].reset_index()
 #print(ntours)
 
 # SEABORN
 #plt.figure(figsize=(40, 20))
 
 # Graph moyenne no2 par mois pour Tours
-#sns.relplot(x="mois", y="val_no2", kind="line", data=ntours)
+sns.relplot(x="mois", y="val_no2", kind="line", data=ntours)
 
 # Graph moyenne no2 pour les 3 annees pour Tours
 #sns.relplot(x= "annee", y="val_no2", kind= "line", data=ntours)
 
 # Graph moyenne no2 pour annee 2018 par mois pour Tours
-#sns.relplot(x="mois", y="val_no2", kind="line", data=ntours.query("annee == '2018'"))
+sns.relplot(x="mois", y="val_no2", kind="line", data=ntours.query("annee == '2018'"))
 
-# PLOTLY
-#plo = px.ntours.gapminder().query("annee == '2018'")
-#fig = px.line(data_frame=(ntours), x="mois", y="val_no2")
-#fig.show()
+
+
