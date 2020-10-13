@@ -7,7 +7,7 @@ Created on Fri Oct  9 11:11:13 2020
 """
 
 import pandas as pd
-import plotly.graph_objects as go
+import plotly.express as px
 import pandas_profiling
 
 url = "https://opendata.arcgis.com/datasets/6f64bbd4f94c425791c2ec7eee33bb71_0.csv"
@@ -15,7 +15,7 @@ df = pd.read_csv(url)
 
 df["mois"] = pd.DatetimeIndex(df["date_ech"]).month
 df["an"] = pd.DatetimeIndex(df["date_ech"]).year
-"""
+"""concat an/mois
 df["axe"] = df["an"].astype(str) + df["mois"].astype(str)
 df["axeTemp"] = df["axe"].astype(int)
 """
@@ -36,12 +36,12 @@ for ville in dfAgre_index['lib_zone']:
 
 # Essai 1 fonction sous alias
 def moyenne(ville):
-    return df.loc[(df["lib_zone"] == ville)].groupby(["an"]).mean()[["val_no2", "val_so2", "val_o3", "val_pm25", "val_pm10"]]
+    return df.loc[(df["lib_zone"] == ville)].groupby(["an", "mois"]).mean()[["val_no2", "val_so2", "val_o3", "val_pm25", "val_pm10"]]
 
 moyTou = moyenne("TOURS")
 moyBlo = moyenne("BOURGES")
 
-"""
+""" créa fic html
 profile = pandas_profiling.ProfileReport(Ville_TOURS)
 profile.to_file("Tours.html")
 
@@ -65,7 +65,22 @@ profile.to_file("Chateauroux.html")
 
 profile = pandas_profiling.ProfileReport(Ville_BOURGES)
 profile.to_file("Bourges.html")
-"""
+
 anBlois = Ville_BLOIS.describe(include='all')
 
 anMonta = Ville_MONTARGIS.describe(include='all')
+"""
+""" sunburst
+data = dict(
+    origine=["Tours", "2018", "2019", "2020", "no2", "so2", "o3", "pm10"],
+    parent=["", "Tours", "Tours", "Tours", "2018", "2018", "2018", "2018" ],
+    value=[0, 0, 0, 0, 1.578, 1, 3.715, 2.865])
+
+fig = px.sunburst(
+    data,
+    names='originer',
+    parents='parent',
+    values='value',
+)
+fig.show()
+"""
