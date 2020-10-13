@@ -29,7 +29,7 @@ df["annee"] = pd.DatetimeIndex(df["date_ech"]).year
 #tours =  "lib_zone", "date_ech", "val_no2", "val_so2", "val_o3", "val_pm10"
 #print(df.loc[(df["lib_zone"] == "TOURS"), tours].sort_values(by=["date_ech"]))
 
-# Moyennes de chaque polluants pour Tours
+# Moyennes de chaque polluants pour toutes les villes
 #print(df.groupby(["lib_zone"]).mean()["val_no2"])
 #print(df.groupby(["lib_zone"]).mean()["val_so2"])
 #print(df.groupby(["lib_zone"]).mean()["val_o3"])
@@ -41,6 +41,13 @@ df["annee"] = pd.DatetimeIndex(df["date_ech"]).year
 #print(df.loc[(df["lib_zone"] == "TOURS")].groupby(["annee", "mois"]).mean()["val_o3"])
 #print(df.loc[(df["lib_zone"] == "TOURS")].groupby(["annee", "mois"]).mean()["val_pm10"])
 
+# Essai 1 fonction sous alias
+def moyenne(ville):
+    return df.loc[(df["lib_zone"] == ville)].groupby(["annee", "mois"]).mean()[["val_no2", "val_so2", "val_o3", "val_pm10"]]
+
+print(moyenne("TOURS"))
+print(moyenne("BOURGES"))
+
 # Moyennes par années et par mois pour les polluants pour Tours
 moyenneT = df.loc[(df["lib_zone"] == "TOURS")].groupby(["annee", "mois"]).mean()[["val_no2", "val_so2", "val_o3", "val_pm10"]]
 #print(moyenneT)
@@ -49,9 +56,12 @@ moyenneT = df.loc[(df["lib_zone"] == "TOURS")].groupby(["annee", "mois"]).mean()
 moyenneB = df.loc[(df["lib_zone"] == "BOURGES")].groupby(["annee", "mois"]).mean()[["val_no2", "val_so2", "val_o3", "val_pm10"]]
 #print(moyenneB)
 
+
+
 # PLOT
 #df.plot.scatter(x='mois',y='val_no2')
-#print(moyenneT.plot())
+graphT= moyenneT.plot(figsize=(15,5))
+graphT.save("graph.html")
 #print(moyenneB.plot())
 
 # Dataframe no2/Tours pour les graphs Seaborn
@@ -72,5 +82,5 @@ ntours= df.loc[(df["lib_zone"] == "TOURS")].groupby(["annee", "mois"]).mean()["v
 
 # PLOTLY
 #plo = px.ntours.gapminder().query("annee == '2018'")
-fig = px.line(data_frame=(ntours), x="mois", y="val_no2")
-fig.show()
+#fig = px.line(data_frame=(ntours), x="mois", y="val_no2")
+#fig.show()
