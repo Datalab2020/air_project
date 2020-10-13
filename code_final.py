@@ -60,9 +60,12 @@ moyenneB = df.loc[(df["lib_zone"] == "BOURGES")].groupby(["annee", "mois"]).mean
 
 # PLOT
 #df.plot.scatter(x='mois',y='val_no2')
-graphT= moyenneT.plot(figsize=(15,5))
-graphT.save("graph.html")
+graphT= moyenneT.plot(figsize=(15,8), title="Moyenne sur 3 ans pour les polluants sur Tours")
+fig = graphT.get_figure()
+plt.savefig("graphT")
+
 #print(moyenneB.plot())
+
 
 # Dataframe no2/Tours pour les graphs Seaborn
 ntours= df.loc[(df["lib_zone"] == "TOURS")].groupby(["annee", "mois"]).mean()["val_no2"].reset_index()
