@@ -8,13 +8,13 @@ df = pd.read_csv(url)
 #print(df.columns)
 #print(df.loc[0:50, ["Y", "X", "valeur", "date_ech", "lib_zone"]].sort_values(by= ["lib_zone", "date_ech"], na_position= "last"))
 #print(df.groupby("lib_zone").mean().loc[:, ["valeur"]])
-print(df.groupby("lib_zone").mean().reset_index().loc[:, ["valeur", "lib_zone"]])
+#print(df.groupby("lib_zone").mean().reset_index().loc[:, ["valeur", "lib_zone"]])
 #print(df.loc[0:50, ["Y", "X", "valeur", "date_ech", "lib_zone"]].df[df["lib_zone"]=="BLOIS"])
 #print(df[df["lib_zone"]=="BLOIS"])
 
-'''
-Idée en stand-by, trop laborieux !!!!!
 
+#Idée en stand-by, trop laborieux !!!!!
+'''
 #Polluant Blois 2018
 #Janvier
 2018janBlois_no2=df.loc[:, ["val_no2", "date_ech", "lib_zone"]][df.lib_zone == "BLOIS"][df.date_ech >= "2018/01/01 00:00:00+00"][df.date_ech < "2018/02/01 00:00:00+00"].sort_values(by= ["date_ech"])
@@ -22,7 +22,8 @@ Idée en stand-by, trop laborieux !!!!!
 janBlois_o3=df.loc[:, ["val_o3", "date_ech", "lib_zone"]][df.lib_zone == "BLOIS"][df.date_ech >= "2018/01/01 00:00:00+00"][df.date_ech < "2018/02/01 00:00:00+00"].sort_values(by= ["date_ech"])
 janBloispm10=df.loc[:, ["val_pm10", "date_ech", "lib_zone"]][df.lib_zone == "BLOIS"][df.date_ech >= "2018/01/01 00:00:00+00"][df.date_ech < "2018/02/01 00:00:00+00"].sort_values(by= ["date_ech"])
 janBloispm25=df.loc[:, ["val_pm25", "date_ech", "lib_zone"]][df.lib_zone == "BLOIS"][df.date_ech >= "2018/01/01 00:00:00+00"][df.date_ech < "2018/02/01 00:00:00+00"].sort_values(by= ["date_ech"])
-
+'''
+'''
 #Février
 fevBlois_no2=df.loc[:, ["val_no2", "date_ech", "lib_zone"]][df.lib_zone == "BLOIS"][df.date_ech >= "2018/02/01 00:00:00+00"][df.date_ech < "2018/03/01 00:00:00+00"].sort_values(by= ["date_ech"])
 fevBlois_so2=df.loc[:, ["val_so2", "date_ech", "lib_zone"]][df.lib_zone == "BLOIS"][df.date_ech >= "2018/02/01 00:00:00+00"][df.date_ech < "2018/03/01 00:00:00+00"].sort_values(by= ["date_ech"])

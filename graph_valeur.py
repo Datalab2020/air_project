@@ -15,42 +15,50 @@ def compte(ville):
     return df.loc[(df["lib_zone"] == ville)].groupby(["valeur", "qualif"]).size()
 #
 comBLO = compte("BLOIS")
-comBLO.plot(kind='bar', title = "Fréquence des valeurs max de polluants") #, legend='Reverse'
+comBLO.plot(kind='bar', figsize= (9,7), title = "Fréquence des valeurs max de polluants") #, legend='Reverse'
+plt.xlabel("Valeur")
 plt.ylabel('Fréquence')
 plt.savefig("Fréquences_BLOIS.png")
 
 comBOU = compte("BOURGES")
-comBOU.plot(kind='bar', title = "Fréquence des valeurs max de polluants") #, legend='Reverse'
+comBOU.plot(kind='bar', figsize= (9,7), title = "Fréquence des valeurs max de polluants") #, legend='Reverse'
+plt.xlabel("Valeur")
 plt.ylabel('Fréquence')
 plt.savefig("Fréquences_BOURGES.png")
 
 comCHAR = compte("CHARTRES")
-comCHAR.plot(kind='bar', title = "Fréquence des valeurs max de polluants") #, legend='Reverse'
+comCHAR.plot(kind='bar', figsize= (9,7), title = "Fréquence des valeurs max de polluants") #, legend='Reverse'
+plt.xlabel("Valeur")
 plt.ylabel('Fréquence')
 plt.savefig("Fréquences_CHARTRES.png")
 
 comCHAT = compte("CHATEAUROUX")
-comCHAT.plot(kind='bar', title = "Fréquence des valeurs max de polluants") #, legend='Reverse'
+comCHAT.plot(kind='bar', figsize= (9,7), title = "Fréquence des valeurs max de polluants") #, legend='Reverse'
+plt.xlabel("Valeur")
 plt.ylabel('Fréquence')
 plt.savefig("Fréquences_CHATEAUROUX.png")
 
 comDRE = compte("DREUX")
-comDRE.plot(kind='bar', title = "Fréquence des valeurs max de polluants") #, legend='Reverse'
+comDRE.plot(kind='bar', figsize= (9,7), title = "Fréquence des valeurs max de polluants") #, legend='Reverse'
+plt.xlabel("Valeur")
 plt.ylabel('Fréquence')
 plt.savefig("Fréquences_DREUX.png")
 
 comMON = compte("MONTARGIS")
-comMON.plot(kind='bar', title = "Fréquence des valeurs max de polluants") #, legend='Reverse'
+comMON.plot(kind='bar', figsize= (9,7), title = "Fréquence des valeurs max de polluants") #, legend='Reverse'
+plt.xlabel("Valeur")
 plt.ylabel('Fréquence')
 plt.savefig("Fréquences_MONTARGIS.png")
 
 comORL = compte("ORLEANS")
-comORL.plot(kind='bar', title = "Fréquence des valeurs max de polluants") #, legend='Reverse'
+comORL.plot(kind='bar', figsize= (9,7), title = "Fréquence des valeurs max de polluants") #, legend='Reverse'
+plt.xlabel("Valeur")
 plt.ylabel('Fréquence')
 plt.savefig("Fréquences_ORLEANS.png")
 
 comTOU = compte("TOURS")
-comTOU.plot(kind='bar', title = "Fréquence des valeurs max de polluants") #, legend='Reverse'
+comTOU.plot(kind='bar', figsize= (9,7), title = "Fréquence des valeurs max de polluants") #, legend='Reverse'
+plt.xlabel("Valeur")
 plt.ylabel('Fréquence')
 plt.savefig("Fréquences_TOURS.png")
 

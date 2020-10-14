@@ -33,7 +33,7 @@ dfAgre_index = dfAgre.reset_index()
 #avec cette ligne je crée une variable avec le df de chaque ville  
 for ville in dfAgre_index['lib_zone']:
         globals()['Ville_%s' % ville] = dfAgre_index.loc[:, ][dfAgre_index.lib_zone == ville].sort_values(by=['date_ech']).reset_index()
-
+#Résumé par fonctione de prog_Isa
 # Essai 1 fonction sous alias
 def moy(ville):
     return df.loc[(df["lib_zone"] == ville)].groupby(["an", "mois"]).mean()[["val_no2", "val_so2", "val_o3", "val_pm25", "val_pm10"]]
@@ -93,12 +93,12 @@ fig.show()
 """
 
 #print(moyTou.describe())
-"""
+
 dfQual = df.loc[:, ["qualif", "lib_zone"]].groupby(["lib_zone", "qualif"])
 
 print(dfQual.size())
-print(dfQual.size().reset_index())
-"""
+#print(dfQual.size().reset_index())
+
 """
 dfVal = df.loc[:, ["valeur", "lib_zone"]].groupby(["lib_zone", "valeur"])
 
